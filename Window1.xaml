@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApplication1.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window2" Height="300" Width="300">
+    <Window.Resources>
+        <DataTemplate x:Key="nameDT">
+            <TextBlock x:Name="textboxName" Text="{Binding Name}"></TextBlock>
+        </DataTemplate>
+        <DataTemplate x:Key="skillDT">
+            <TextBlock x:Name="textboxName" Text="{Binding Skill}"></TextBlock>
+        </DataTemplate>
+        <DataTemplate x:Key="hmDT">
+            <CheckBox x:Name="textboxName" IsChecked="{Binding HasM}"></CheckBox>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="listViewStudent">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="姓名" CellTemplate="{StaticResource nameDT}"/>
+                    <GridViewColumn Header="技能" CellTemplate="{StaticResource skillDT}"/>
+                    <GridViewColumn Header="已婚" CellTemplate="{StaticResource hmDT}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row="1" Content="给官老爷正名!" Click="Button_Click"></Button>
+    </Grid>
+</Window>
